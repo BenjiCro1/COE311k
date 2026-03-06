@@ -1,0 +1,93 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": []
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "code",
+      "source": [
+        "import numpy as np"
+      ],
+      "metadata": {
+        "id": "gCGFL0v98HbE"
+      },
+      "execution_count": 2,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 8,
+      "metadata": {
+        "id": "DbG0HNmA44lS"
+      },
+      "outputs": [],
+      "source": [
+        "def dia_dom(A):\n",
+        "    n = len(A)\n",
+        "    for i in range(n):\n",
+        "        diagonal = abs(A[i][i])\n",
+        "        row_sum = 0\n",
+        "        for j in range(n):\n",
+        "            if i != j:\n",
+        "                row_sum += abs(A[i][j])\n",
+        "        if diagonal < row_sum:\n",
+        "            return False\n",
+        "    return True"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "B = np.array([[100, 2, 3, 0, 0],\n",
+        "            [2, 1000, 2, 3, 0],\n",
+        "            [3, 2, 100, 2, 3],\n",
+        "            [0, 3, 2, 100, 2],\n",
+        "            [0, 0, 3, 2, 1000]], dtype=float)\n",
+        "print(B)\n",
+        "print(\"Is Matrix Diagonally dominant? \", dia_dom(B))"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "XY86l_9o8o58",
+        "outputId": "ade09cc2-469e-465a-8aaf-20ab16f78e49"
+      },
+      "execution_count": 10,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[[ 100.    2.    3.    0.    0.]\n",
+            " [   2. 1000.    2.    3.    0.]\n",
+            " [   3.    2.  100.    2.    3.]\n",
+            " [   0.    3.    2.  100.    2.]\n",
+            " [   0.    0.    3.    2. 1000.]]\n",
+            "Is Matrix Diagonally dominant?  True\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "3DvjWHHO80X0"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
